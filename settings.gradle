@@ -1,0 +1,2 @@
+rootProject.name = "PrismSync"
+include ':app'
