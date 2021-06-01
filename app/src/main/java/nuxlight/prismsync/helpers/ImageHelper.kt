@@ -5,6 +5,7 @@ import android.content.ContentUris
 import android.database.Cursor
 import android.provider.MediaStore
 import android.util.Log
+import nuxlight.prismsync.models.AlbumEntity
 import nuxlight.prismsync.models.ImageEntity
 
 class ImageHelper {
@@ -21,7 +22,7 @@ class ImageHelper {
                 val imageName = it.getString(it.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME))
                 val url = it.getString(it.getColumnIndex(MediaStore.Images.Media.RELATIVE_PATH))
                 val contUri = ContentUris.withAppendedId(extUri, id)
-                listOfImageEntity.add(ImageEntity(imageName, folder, contUri))
+                listOfImageEntity.add(ImageEntity(imageName, AlbumEntity(folder, false), contUri))
                 Log.i(javaClass.name, "Ext new folder $folder with $contUri")
             }
         }

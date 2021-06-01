@@ -3,6 +3,7 @@ package nuxlight.prismsync
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import nuxlight.prismsync.dao.AlbumDao
 import nuxlight.prismsync.helpers.ImageHelper
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         val imgBdd = imageHelper.getImageEntities(contentResolver)
         val folderList = imgBdd.distinctBy { it.album }
         folderList.forEach {
-            Log.i(localClassName, it.album)
+            Log.i(localClassName, it.album.name)
         }
     }
 }
