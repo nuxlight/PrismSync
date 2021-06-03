@@ -2,7 +2,6 @@ package nuxlight.prismsync.helpers
 
 import android.content.ContentResolver
 import android.content.ContentUris
-import android.database.Cursor
 import android.provider.MediaStore
 import android.util.Log
 import nuxlight.prismsync.models.AlbumEntity
