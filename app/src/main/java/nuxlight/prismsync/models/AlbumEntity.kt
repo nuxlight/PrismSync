@@ -1,9 +1,10 @@
 package nuxlight.prismsync.models
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 
-@Entity
+@Entity(tableName = "album_table")
 data class AlbumEntity (
     val name: String,
-    val isSynced: Boolean
+    @ColumnInfo(name = "is_synced") val isSynced: Boolean
 )
