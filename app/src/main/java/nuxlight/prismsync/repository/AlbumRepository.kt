@@ -1,14 +1,14 @@
 package nuxlight.prismsync.repository
 
-import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
 import nuxlight.prismsync.dao.AlbumDao
-import nuxlight.prismsync.models.AlbumEntity
+import nuxlight.prismsync.models.Album
 
 class AlbumRepository(private val  albumDao: AlbumDao) {
 
-    val readAllAlbum: LiveData<List<AlbumEntity>> = albumDao.getAll()
+    val readAllAlbum: Flow<List<Album>> = albumDao.getAll()
 
-    fun addAlbum(album: AlbumEntity){
+    fun addAlbum(album: Album){
         albumDao.addAlbum(album)
     }
 }

@@ -1,17 +1,17 @@
 package nuxlight.prismsync.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import nuxlight.prismsync.models.AlbumEntity
+import kotlinx.coroutines.flow.Flow
+import nuxlight.prismsync.models.Album
 
 @Dao
 interface AlbumDao {
 
     @Query("SELECT * FROM album_table")
-    fun getAll(): LiveData<List<AlbumEntity>>
+    fun getAll(): Flow<List<Album>>
 
     @Insert
-    fun addAlbum(album: AlbumEntity)
+    fun addAlbum(album: Album)
 }

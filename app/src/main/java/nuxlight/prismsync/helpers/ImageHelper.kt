@@ -4,13 +4,13 @@ import android.content.ContentResolver
 import android.content.ContentUris
 import android.provider.MediaStore
 import android.util.Log
-import nuxlight.prismsync.models.AlbumEntity
-import nuxlight.prismsync.models.ImageEntity
+import nuxlight.prismsync.models.Album
+import nuxlight.prismsync.models.Image
 
 class ImageHelper {
 
-    fun getImageEntities(contentResolver: ContentResolver) : MutableList<ImageEntity> {
-        val listOfImageEntity : MutableList<ImageEntity> = mutableListOf()
+    fun getImageEntities(contentResolver: ContentResolver) : MutableList<Image> {
+        val listOfImage : MutableList<Image> = mutableListOf()
         val projection = arrayOf(MediaStore.Images.Media._ID)
         val extUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         val intUri = MediaStore.Images.Media.INTERNAL_CONTENT_URI
@@ -21,7 +21,7 @@ class ImageHelper {
                 val imageName = it.getString(it.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME))
                 val url = it.getString(it.getColumnIndex(MediaStore.Images.Media.RELATIVE_PATH))
                 val contUri = ContentUris.withAppendedId(extUri, id)
-                listOfImageEntity.add(ImageEntity(imageName, AlbumEntity(folder, false), contUri))
+                listOfImage.add(Image(imageName, Album(folder, false), contUri))
                 Log.i(javaClass.name, "Ext new folder $folder with $contUri")
             }
         }
@@ -30,6 +30,6 @@ class ImageHelper {
                 Log.i(javaClass.name, "Int new folder $it")
             }
         }
-        return listOfImageEntity
+        return listOfImage
     }
 }
